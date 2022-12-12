@@ -25,31 +25,31 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping
+	@GetMapping("/getall")
 	public ResponseEntity<List<User>> findAll(){
 		List<User> list = service.findAll();
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/getbyid/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 		Optional<User> obj = service.findById(id);
 		return new ResponseEntity<Optional<User>>(obj, HttpStatus.OK);
 	}
 	
-	@PostMapping
+	@PostMapping("/insert")
 	public ResponseEntity<User> insert(@RequestBody User obj){
 		User user = service.insert(obj);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User obj){
 		obj = service.update(id, obj);
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
