@@ -30,9 +30,8 @@
         </div>
     </form>
     <button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
-    <button type="button" class="btn btn-secondary" onclick="document.getElementById('form-cadastro-user').reset();">Novo</button>
-
-
+    <button type="button" class="btn btn-secondary"
+        onclick="document.getElementById('form-cadastro-user').reset();">Novo</button>
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -41,7 +40,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        function salvarUsuario(){
+        function salvarUsuario() {
             var id = $("#id").val();
             var nome = $("#nome").val();
             var email = $("#email").val();
@@ -50,9 +49,9 @@
             $.ajax({
                 method: "POST",
                 url: "users/insert",
-                data: JSON.stringify({id: id, username: nome, email: email}),
+                data: JSON.stringify({ id: id, username: nome, email: email }),
                 contentType: "application/json; charset=utf-8",
-                success: function (response){
+                success: function (response) {
                     $("#id").val(response.id);
                     alert("Salvo com sucesso!");
                 }

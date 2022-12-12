@@ -31,8 +31,8 @@ public class UserController {
 		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getbyid/{id}")
-	public ResponseEntity<?> findById(@PathVariable Long id) {
+	@GetMapping("/getbyid")
+	public ResponseEntity<?> findById(@RequestBody Long id) {
 		Optional<User> obj = service.findById(id);
 		return new ResponseEntity<Optional<User>>(obj, HttpStatus.OK);
 	}
